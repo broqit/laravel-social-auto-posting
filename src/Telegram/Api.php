@@ -101,6 +101,15 @@ class Api
         return $result? $result : false;
     }
 
+    private static function replaceWithFileInstance(&$params, $keys)
+    {
+        foreach ($keys as $key) {
+            if (!empty($params[$key])) {
+                $params[$key] = new \CURLFile($params[$key]);
+            }
+        }
+    }
+
     /**
      * Send photo
      *
@@ -398,10 +407,18 @@ class Api
     public static function sendRequest($method = 'sendMessage', $params)
     {
         $curl = curl_init(self::$api_url . self::$api_token . '/'. $method);
+
+        $keys = ['photo', 'media', 'video', 'audio', 'document'];
+        self::replaceWithFileInstance($params, $keys);
+
+        curl_setopt($curl, CURLOPT_HTTPHEADER, [
+            'Content-Type:multipart/form-data'
+        ]);
+        
         curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
         if(self::$proxy) {
