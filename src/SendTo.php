@@ -15,7 +15,6 @@ namespace Toolkito\Larasap;
 
 use Illuminate\Support\Facades\Config;
 use Toolkito\Larasap\Telegram\Api AS TelegramApi;
-use Toolkito\Larasap\Twitter\Api AS TwitterApi;
 use Toolkito\Larasap\Facebook\Api AS FacebookApi;
 
 class SendTo
@@ -80,19 +79,6 @@ class SendTo
         }
 
         return $result;
-    }
-
-    /**
-     * Send message to Twitter
-     *
-     * @param $message
-     * @param null $media
-     * @param array $options
-     * @return Twitter\stdClass
-     */
-    public static function Twitter($message, $media = [], $options = [])
-    {
-        return TwitterApi::sendMessage($message, $media, $options);
     }
 
     /**
