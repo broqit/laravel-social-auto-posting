@@ -5,7 +5,6 @@
 # 🌈 Introduction
 This is a Laravel package to post your content to social networks such:
  - Telegram Channel (‌Based on [Telegram Bot API](https://core.telegram.org/bots/api))
- - Twitter
  - Facebook
  
  ## 🚀 Features:
@@ -21,7 +20,6 @@ This is a Laravel package to post your content to social networks such:
  - 📌 Send venue to Telegram
  - 📞 Send contact to Telegram
  - 🌐 Send message with url inline keyboard to Telegram channel
- - ✨ Send text and media to Twitter
  - 🎉 Send text and media to Facebook
  
  ## 🔨 Installation:
@@ -41,7 +39,7 @@ This is a Laravel package to post your content to social networks such:
  ## 🕹 Usage:
  First, add the `use Toolkito\Larasap\SendTo;` in your controller.
  
- Next, send message to your Telegram channel or Twitter account. 
+ Next, send message to your Telegram channel. 
  
  ## 🚩 Roadmap
 
@@ -214,21 +212,6 @@ SendTo::Telegram(
                 'url' => 'https://github.com/toolkito/laravel-social-auto-posting/archive/master.zip'
             ],
         ]
-    ]
-);
-```
-### ⭐ Twitter examples:
-#### ✨ Text tweet:
-```php
-SendTo::Twitter('Hello, I\'m testing Laravel social auto posting');
-```
-#### ✨ Tweet with media:
-```php
-SendTo::Twitter(
-    'Hello, I\'m testing Laravel social auto posting',
-    [
-        public_path('photo-1.jpg'),
-        public_path('photo-2.jpg')
     ]
 );
 ```
