@@ -9,14 +9,7 @@ return [
         'channel_signature' => '', // This will be assigned in the footer of message
         'proxy' => false,   // True => Proxy is On | False => Proxy Off
     ],
-
-    'twitter' => [
-        'consurmer_key' => '',
-        'consurmer_secret' => '',
-        'access_token' => '',
-        'access_token_secret' => ''
-    ],
-
+    
     'facebook' => [
         'app_id' => '',
         'app_secret' => '',
